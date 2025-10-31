@@ -1,6 +1,7 @@
 public class Game {
     // PROPERTIES
-    private int id;
+    private static int nextId = 1;
+    private final int id;
     private String title;
     private int year;
     private GameGenre genre;
@@ -29,8 +30,8 @@ public class Game {
     public enum GamePlatform { PC, Xbox, PlayStation, NintendoSwitch }
 
     // CONSTRUCTOR
-    public Game(int id, String title, int year, Game.GameGenre genre, GamePlatform platform, String description, double pricePerDay){
-        this.id = id;
+    public Game(String title, int year, Game.GameGenre genre, GamePlatform platform, String description, double pricePerDay){
+        this.id = nextId++;
         this.title = title;
         this.year = year;
         this.genre = genre;
@@ -41,8 +42,6 @@ public class Game {
 
     // GET/SET METHODS
     public int getId() {return id;}
-
-    public void setId(int id) {this.id = id;}
 
     public String getTitle() {return title;}
 
@@ -75,13 +74,7 @@ public class Game {
     // TO STRING METHOD
     @Override
     public String toString() {
-        return "Game ID: " + id +
-                "\nTitle: " + title +
-                "\nYear: " + year +
-                "\nGenre: " + genre +
-                "\nPlatform: " + platform +
-                "\nDescription: " + description +
-                "\nPrice per day: "+ pricePerDay;
+        return "[" + id + "] " + title + " | " + year + " | " + genre + " | " + platform + " | $" + pricePerDay;
     }
 
 }
