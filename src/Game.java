@@ -28,7 +28,7 @@ public class Game {
         SURVIVAL,
         STEALTH
     }
-    public enum GamePlatform { PC, Xbox, PlayStation, NintendoSwitch }
+    public enum GamePlatform { PC, MS_DOS, Xbox, PlayStation, NintendoSwitch, Nintendo64, GameBoy }
 
     // CONSTRUCTOR
     public Game(String title, int year, Game.GameGenre genre, GamePlatform platform, String description, double pricePerDay){

@@ -1,32 +1,54 @@
 public class Main {
     public static void main(String[] args) {
-        System.out.println("Play Ops - Video Game rental management system\n");
+        System.out.println("\nPlay Ops - Video Game rental management system\n");
 
-        // Testing game + customer class
-        Game g1 = new Game("Minecraft", 2009, Game.GameGenre.SANDBOX, Game.GamePlatform.PC, "Minecraft is a game made up of blocks, creatures, and community. You can survive the night or build a work of art – the choice is all yours.", 1010.99);
-        Game g2 = new Game("Doom Eternal", 2020, Game.GameGenre.SHOOTER, Game.GamePlatform.PC,"Doom Eternal is a first-person shooter where you play as the Slayer to stop demons from destroying Earth.", 4);
-        Game g3 = new Game("Resident Evil Village", 2021, Game.GameGenre.HORROR, Game.GamePlatform.PlayStation, "Experience survival horror like never before in the eighth major installment in the storied Resident Evil franchise - Resident Evil Village", 4);
+        // Creation of store object
+        Store metroRetro = new Store("MetroRetro");
 
+        // Creation of game objects
+        Game g1 = new Game("Super Mario 64", 1996, Game.GameGenre.PLATFORMER, Game.GamePlatform.Nintendo64, "Super Mario 64 is a 1996 platform game developed and published by Nintendo for the Nintendo 64", 2.99);
+        Game g2 = new Game("Doom", 1993, Game.GameGenre.SHOOTER, Game.GamePlatform.MS_DOS,"The player assumes the role of a space marine, later unofficially referred to as Doomguy, fighting through hordes of undead humans and invading demons", 4);
+        Game g3 = new Game("Pokémon Red", 1996, Game.GameGenre.ROLE_PLAYING, Game.GamePlatform.GameBoy, "Pokémon Red is a 1996 role-playing game where you play as a young boy from Pallet Town who travels the Kanto region to capture and train Pokémon to become the Pokémon League Champion.", 6);
+
+        // Creation of customer objects
         Customer c1 = new Customer("John", "Doe", "john@doe.com", "Street 123");
         Customer c2 = new Customer("Jane", "Doe", "jane@doe.com", "Street 234");
         Customer c3 = new Customer("Mario", "Rossi", "mario@rossi.com", "Street 345");
 
-        System.out.println(g1);
-        System.out.println(g2);
-        System.out.println(g3);
+        // Adding games to store
+        metroRetro.addGame(g1);
+        metroRetro.addGame(g2);
+        metroRetro.addGame(g3);
 
-        System.out.println("-------------------------------------------------------------------");
+        // Adding customers to store
+        metroRetro.addCustomer(c1);
+        metroRetro.addCustomer(c2);
+        metroRetro.addCustomer(c3);
 
-        System.out.println(c1);
-        System.out.println(c2);
-        System.out.println(c3);
+        // Displaying store data
+        System.out.println("\n============================");
+        System.out.println("\tWelcome to "+metroRetro.getName());
+        System.out.println("============================");
 
-        Store s1 = new Store("Bobi Store");
-        s1.addGame(g1);
-        s1.addGame(g2);
-        s1.displayInventory();
-        s1.addCustomer(c1);
-        s1.addCustomer(c2);
-        s1.displayCustomers();
+        System.out.println("\n\tAVAILABLE GAMES");
+        metroRetro.displayInventory();
+
+        System.out.println("\n\tREGISTERED CUSTOMERS");
+        metroRetro.displayCustomers();
+
+        // Searching instances
+        System.out.println("\n\tSearching for 'Doom'");
+        Game foundGame = metroRetro.findGame("doom");
+        System.out.println(foundGame != null ? foundGame:"Game not found");
+
+        // Removing instances from demo
+        System.out.println("\n\tRemoving 'Super Mario 64'");
+        metroRetro.removeGame("Super Mario 64");
+
+        // Updated inventory
+        System.out.println("\n\tUPDATED INVENTORY");
+        metroRetro.displayInventory();
+
+        System.out.println("\n\nProgram finished successfully, thank you for trying out!");
     }
 }
