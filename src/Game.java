@@ -8,6 +8,7 @@ public class Game {
     private GamePlatform platform;
     private String description;
     private double pricePerDay;
+    private int quantity;
 
     // ENUMERATIONS
     public enum GameGenre{
@@ -65,6 +66,13 @@ public class Game {
 
     public double getPricePerDay() {return pricePerDay;}
 
+    public int getQuantity() {
+        return quantity;
+    }
+
+    public void setQuantity(int quantity) {
+        this.quantity = quantity;
+    }
 
     // OTHER METHODS
     public double calculateRentalCost(int days) {
