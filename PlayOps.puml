@@ -1,0 +1,104 @@
+@startuml
+class Customer {
+- {static} int nextId
+- int id
+- String name
+- String lastName
+- String email
+- String address
++ <<Create>> Customer(String,String,String,String)
++ int getId()
++ String getName()
++ void setName(String)
++ String getLastName()
++ void setLastName(String)
++ String getEmail()
++ void setEmail(String)
++ String getAddress()
++ void setAddress(String)
+- boolean isValidEmail(String)
++ String toString()
+}
+
+
+class Main {
++ {static} void main(String[])
+}
+
+class Store {
+- String name
+- ArrayList<Game> inventory
+- ArrayList<Customer> customers
++ <<Create>> Store(String)
++ String getName()
++ void setName(String)
++ void addGame(Game)
++ void removeGame(String)
++ Game findGame(String)
++ void displayInventory()
++ void addCustomer(Customer)
++ Customer findCustomer(String)
++ void removeCustomer(String)
++ void displayCustomers()
+}
+
+
+class Game {
+- {static} int nextId
+- int id
+- String title
+- int year
+- GameGenre genre
+- GamePlatform platform
+- String description
+- double pricePerDay
+- int quantity
++ <<Create>> Game(String,int,Game.GameGenre,GamePlatform,String,double)
++ int getId()
++ String getTitle()
++ void setTitle(String)
++ int getYear()
++ void setYear(int)
++ GameGenre getGenre()
++ void setGenre(GameGenre)
++ GamePlatform getPlatform()
++ void setPlatform(GamePlatform)
++ String getDescription()
++ void setDescription(String)
++ double getPricePerDay()
++ int getQuantity()
++ void setQuantity(int)
++ double calculateRentalCost(int)
++ String toString()
+}
+
+
+enum GameGenre {
++  ACTION
++  ADVENTURE
++  ROLE_PLAYING
++  SIMULATION
++  STRATEGY
++  SPORTS
++  RACING
++  FIGHTING
++  HORROR
++  PLATFORMER
++  PUZZLE
++  SANDBOX
++  SHOOTER
++  SURVIVAL
++  STEALTH
+}
+
+enum GamePlatform {
++  PC
++  MS_DOS
++  Xbox
++  PlayStation
++  NintendoSwitch
++  Nintendo64
++  GameBoy
+}
+
+@enduml
