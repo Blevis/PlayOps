@@ -1,6 +1,6 @@
 public class Customer {
 
-    // PROPERTIES
+    // Properties
     private static int nextId = 1;
     private final int id;
     private String name;
@@ -8,7 +8,7 @@ public class Customer {
     private String email;
     private String address;
 
-    // CONSTRUCTOR
+    // Constructor
     public Customer(String name, String lastName, String email, String address) {
         this.id = nextId++;
         this.name = name;
@@ -17,7 +17,7 @@ public class Customer {
         this.address = address;
     }
 
-    // GET/SET METHODS
+    // Get/Set Methods
     public int getId() {
         return id;
     }
@@ -58,13 +58,13 @@ public class Customer {
         this.address = address;
     }
 
-    // OTHER METHODS
+    // Other Methods
     private boolean isValidEmail(String email){
         return email != null  && email.contains("@") && email.contains(".");
     }
 
 
-    // TO STRING METHOD
+    // To String Method
     @Override
     public String toString(){
         return "[" + id + "] " + name + " " + lastName + " | " + email + " | " + address;

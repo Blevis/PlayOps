@@ -1,14 +1,17 @@
 import java.util.ArrayList;
 
 public class Store {
+    // Properties
     private String name;
     private ArrayList<Game> inventory = new ArrayList<>();
     private ArrayList<Customer> customers = new ArrayList<>();
 
+    // Constructor
     public Store(String name) {
         this.name = name;
     }
 
+    // Get/Set Methods
     public String getName() {
         return name;
     }
@@ -17,7 +20,7 @@ public class Store {
         this.name = name;
     }
 
-    // Game related methods
+    // Game Related Methods
     public void addGame(Game game) {
         inventory.add(game);
         game.setQuantity(game.getQuantity() + 1);
@@ -57,7 +60,7 @@ public class Store {
     }
 
 
-    // Customer related methods
+    // Customer Related Methods
     public void addCustomer(Customer customer) {
         customers.add(customer);
         System.out.println("Customer " + customer.getName() + " " + customer.getLastName() + " has been added.");
