@@ -1,0 +1,84 @@
+\documentclass[a4paper,12pt]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage{geometry}
+\usepackage{graphicx}
+\usepackage{booktabs}
+\usepackage{array}
+\usepackage{titlesec}
+\usepackage{hyperref}
+
+\geometry{margin=1in}
+
+\titleformat{\section}{\normalfont\Large\bfseries}{\thesection}{1em}{}
+\titleformat{\subsection}{\normalfont\large\bfseries}{\thesubsection}{1em}{}
+
+\title{\textbf{OOP Project Sprint 1\\Outline and Contribution Report}\\[1ex]
+\large \textit{PlayOps - A retro videogame rental system}}
+\author{
+Blevis Allushi, Kristjan Seraj\\
+\small University Metropolitan Tirana\\
+\small BSc in Artificial Intelligence\\
+\small \textbf{Assigning / Accepting Professor:} Prof. Evis Plaku
+}
+\date{\today}
+
+\begin{document}
+\maketitle
+\tableofcontents
+\newpage
+
+\section{Project Overview}
+The \textbf{PlayOps} is a management system for game rental stores, specifically targeting the dwindling vintage games scene. It allows users to:
+\begin{itemize}
+  \item Add, remove, and search for customers and games.
+  \item Display game inventories and customers.
+  \item Manage game rentals and calculate rental costs.
+\end{itemize}
+
+PlayOps development implements OOP prinicples such as encapsulation, modular design, and data abstraction.
+
+\section{UML Class Diagram}
+The UML diagram explains the structure and relationships of the components within this project.
+
+\begin{center}
+  \includegraphics[scale=0.3]{PlayOps.png}
+\end{center}
+
+\section{Project Structure and Design}
+The project follows a modular object-oriented structure:
+\begin{itemize}
+  \item \textbf{Customer.java} — Manages customer data and an instance of validation in the email entries.
+  \item \textbf{Game.java} — Represents the game properties and their attributes.
+  \item \textbf{Store.java} — Manages lists of customers and games.
+  \item \textbf{Main.java} — Entry point that handles user interaction.
+\end{itemize}
+
+Each class was designed with primary OOP philosophy of dividing work into classes with reusability and user convenience.
+
+\subsection*{Team Roles and Contributions}
+\begin{center}
+\begin{tabular}{>{\bfseries}m{3cm} m{10cm}}
+\toprule
+\textbf{Name} & \textbf{Responsibilities and Contributions} \\
+\midrule
+Blevis Allushi & Co-author and developer. Designed the overall class architecture and implemented (\texttt{Customer}, \texttt{Game}) classes, implemented key methods and restrictions via enumeration, finalized (\texttt{Main}) after all work was submitted. Contributed to UML modeling and documentation structure. \\
+\addlinespace
+Kristjan Seraj & Co-author and developer. Implemented core functionality for connecting (\texttt{Customer}, \texttt{Game}) classes through the (\texttt{Store}) class, implemented ArrayLists, developed search and display methods. Contributed equally to debugging, testing, and UML refinement. \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\subsection*{Collaboration Process}
+Blevis and Kristjan collaborated equally throughout all phases of the project. From the initial idea and planning to programming, testing and final documentation. Tasks were divided among the two, but major decisions and features were collectively discussed and decided upon.
+
+\section{Reflection}
+This project was assigned to the 2025 class of AI \& Software Engineering at University Metropolitan Tirana, Tirana, Albania. First and foremost, this project was fun and entertaining. Although Sprint 1 was evidently not the most complex, it initiated enjoyable discourse not only within groups, but among them as well. It laid foundations for what it is like to work in pairs for the successful delivery of a project where each member's implementations are crucial and important in their respective ways. It suffices to say, no longer speaking for myself in third person, that I believe it engaged the class, hardened the knowledge gained up to this point in this course, and served as an entry to real-world expectations. In myself's and Kristjans group each of us gained experience in:
+\begin{itemize}
+  \item Designing maintainable class hierarchies.
+  \item Intertwining classes to achieve workflow and functionality.
+  \item Using collections effectively in Java.
+  \item Collaborating through Git-based workflows.
+  \item Documenting work through designing UML files and using LaTeX for official documentations. 
+\end{itemize}
+\end{document}
