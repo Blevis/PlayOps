@@ -101,4 +101,11 @@ enum GamePlatform {
 +  GameBoy
 }
 
+Store "1" --> "many" Customer : has >
+Store "1" --> "many" Game : manages >
+Game --> GameGenre : uses >
+Game --> GamePlatform : runs on >
+Main --> Store : creates >
+
+
 @enduml
