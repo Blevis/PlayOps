@@ -28,7 +28,7 @@ public class Store {
     public void addGame(Game game) {
         inventory.add(game);
         game.setQuantity(game.getQuantity() + 1);
-        System.out.println(game.getTitle() + " has been added to the inventory.");
+        System.out.println(game.getName() + " has been added to the inventory.");
     }
 
     public void removeGame(String title) {
@@ -43,7 +43,7 @@ public class Store {
 
     public Game findGame(String title) {
         for (Game game : inventory) {
-            if (game.getTitle().equalsIgnoreCase(title)) {
+            if (game.getName().equalsIgnoreCase(title)) {
                 return game;
             }
         }

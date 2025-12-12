@@ -1,20 +1,13 @@
 package com.playops.model;
-
+import com.playops.exceptions.PaymentException;
 import com.playops.interfaces.Buyable;
 
-public class Game implements Buyable {
-    // Properties
-    private static int nextId = 1;
-    private final int id;
-    private String title;
-    private int year;
+public class Game extends Product implements Buyable {
+    // Attributes
     private GameGenre genre;
     private GamePlatform platform;
-    private String description;
     private double pricePerDay;
-    private int quantity;
 
-    // Enumerations
     public enum GameGenre{
         ACTION,
         ADVENTURE,
@@ -35,58 +28,37 @@ public class Game implements Buyable {
     public enum GamePlatform { PC, MS_DOS, Xbox, PlayStation, NintendoSwitch, Nintendo64, GameBoy }
 
     // Constructor
-    public Game(String title, int year, Game.GameGenre genre, GamePlatform platform, String description, double pricePerDay){
-        this.id = nextId++;
-        this.title = title;
-        this.year = year;
+    protected Game(String name, String description, int year, int quantity, double price, double pricePerDay, GameGenre genre, GamePlatform platform){
+        super(name, description, year, quantity, price);
+        setPricePerDay(pricePerDay);
         this.genre = genre;
         this.platform = platform;
-        this.description = description;
+    }
+
+    // Getters
+    public double getPricePerDay() {return pricePerDay;}
+    public GameGenre getGenre() {return genre;}
+    public GamePlatform getPlatform() {return platform;}
+
+    // Setters
+    public void setPricePerDay(double pricePerDay){
+        validatePrice(pricePerDay);
         this.pricePerDay = pricePerDay;
     }
 
-    // Get/Set Methods
-    public int getId() {return id;}
-
-    public String getTitle() {return title;}
-
-    public void setTitle(String title) {this.title = title;}
-
-    public int getYear() {return year;}
-
-    public void setYear(int year) {this.year = year;}
-
-    public GameGenre getGenre() {return genre;}
-
-    public void setGenre(GameGenre genre) {this.genre = genre;}
-
-    public GamePlatform getPlatform() {return platform;}
-
-    public void setPlatform(GamePlatform platform) {this.platform = platform;}
-
-    public String getDescription() {return description;}
-
-    public void setDescription(String description) {this.description = description;}
-
-    public double getPricePerDay() {return pricePerDay;}
-
-    public int getQuantity() {
-        return quantity;
+    // Buy - Other methods
+    @Override
+    public double buy() throws PaymentException{
+        if(!isAvailable()) throw new PaymentException("No stock available");
+        setQuantity(getQuantity()-1);
+        return getPrice();
     }
 
-    public void setQuantity(int quantity) {
-        this.quantity = quantity;
-    }
-
-    // Other Methods
-    public double calculateRentalCost(int days) {
-        return pricePerDay * days;
-    }
-
-    // To String Method
+    // To string
     @Override
     public String toString() {
-        return "[" + id + "] " + title + " | " + year + " | " + genre + " | " + platform + " | $" + pricePerDay;
+        return super.toString() + " | " + genre + " | " + platform;
     }
+
 
 }

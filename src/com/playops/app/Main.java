@@ -3,7 +3,7 @@ package com.playops.app;
 public class Main {
     public static void main(String[] args) {
         System.out.println("\nPlay Ops - Video com.playops.model.Game rental management system\n");
-
+/*
         // Creation of store object
         Store metroRetro = new Store("MetroRetro");
 
@@ -52,5 +52,7 @@ public class Main {
         metroRetro.displayInventory();
 
         System.out.println("\n\nProgram finished successfully, thank you for trying out!");
+
+ */
     }
 }
