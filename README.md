@@ -16,6 +16,10 @@ As real as you want it to be. Clearly speaking, this is a project submission for
 
 Mostly students. It is my own and my co-author's belief that dissecting code, especially code as straight-forward and principled as this project, is good practice to one's own learning and progress.
 
+#### Do you plan on maintaining this project?
+
+Unlikely to be maintained past an arbitrary stage - at least not in the form it's currently in. It could however, become the basis for something new.
+
 #### What is your favorite color?
 
 Depends, I prefer dark shades of red or violet. On a good day I may even say green.
