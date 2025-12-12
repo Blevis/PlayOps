@@ -1,6 +1,8 @@
+package com.playops.app;
+
 public class Main {
     public static void main(String[] args) {
-        System.out.println("\nPlay Ops - Video Game rental management system\n");
+        System.out.println("\nPlay Ops - Video com.playops.model.Game rental management system\n");
 
         // Creation of store object
         Store metroRetro = new Store("MetroRetro");
@@ -39,7 +41,7 @@ public class Main {
         // Searching instances
         System.out.println("\n\tSearching for 'Doom'");
         Game foundGame = metroRetro.findGame("doom");
-        System.out.println(foundGame != null ? foundGame:"Game not found");
+        System.out.println(foundGame != null ? foundGame:"com.playops.model.Game not found");
 
         // Removing instances from demo
         System.out.println("\n\tRemoving 'Super Mario 64'");

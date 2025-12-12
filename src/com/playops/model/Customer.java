@@ -1,3 +1,5 @@
+package com.playops.model;
+
 public class Customer {
 
     // Properties

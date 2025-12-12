@@ -48,10 +48,10 @@ The UML diagram explains the structure and relationships of the components withi
 \section{Project Structure and Design}
 The project follows a modular object-oriented structure:
 \begin{itemize}
-  \item \textbf{Customer.java} — Manages customer data and an instance of validation in the email entries.
-  \item \textbf{Game.java} — Represents the game properties and their attributes.
-  \item \textbf{Store.java} — Manages lists of customers and games.
-  \item \textbf{Main.java} — Entry point that handles user interaction.
+  \item \textbf{com.playops.model.Customer.java} — Manages customer data and an instance of validation in the email entries.
+  \item \textbf{com.playops.model.Game.java} — Represents the game properties and their attributes.
+  \item \textbf{com.playops.store.Store.java} — Manages lists of customers and games.
+  \item \textbf{com.playops.app.Main.java} — Entry point that handles user interaction.
 \end{itemize}
 
 Each class was designed with primary OOP philosophy of dividing work into classes with reusability and user convenience.
@@ -62,9 +62,9 @@ Each class was designed with primary OOP philosophy of dividing work into classe
 \toprule
 \textbf{Name} & \textbf{Responsibilities and Contributions} \\
 \midrule
-Blevis Allushi & Co-author and developer. Designed the overall class architecture and implemented (\texttt{Customer}, \texttt{Game}) classes, implemented key methods and restrictions via enumeration, finalized (\texttt{Main}) after all work was submitted. Contributed to UML modeling and documentation structure. \\
+Blevis Allushi & Co-author and developer. Designed the overall class architecture and implemented (\texttt{com.playops.model.Customer}, \texttt{com.playops.model.Game}) classes, implemented key methods and restrictions via enumeration, finalized (\texttt{com.playops.app.Main}) after all work was submitted. Contributed to UML modeling and documentation structure. \\
 \addlinespace
-Kristjan Seraj & Co-author and developer. Implemented core functionality for connecting (\texttt{Customer}, \texttt{Game}) classes through the (\texttt{Store}) class, implemented ArrayLists, developed search and display methods. Contributed equally to debugging, testing, and UML refinement. \\
+Kristjan Seraj & Co-author and developer. Implemented core functionality for connecting (\texttt{com.playops.model.Customer}, \texttt{com.playops.model.Game}) classes through the (\texttt{com.playops.store.Store}) class, implemented ArrayLists, developed search and display methods. Contributed equally to debugging, testing, and UML refinement. \\
 \bottomrule
 \end{tabular}
 \end{center}

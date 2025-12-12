@@ -1,3 +1,7 @@
+package com.playops.store;
+
+import com.playops.model.Game;
+
 import java.util.ArrayList;
 
 public class Store {
@@ -20,7 +24,7 @@ public class Store {
         this.name = name;
     }
 
-    // Game Related Methods
+    // com.playops.model.Game Related Methods
     public void addGame(Game game) {
         inventory.add(game);
         game.setQuantity(game.getQuantity() + 1);
@@ -60,10 +64,10 @@ public class Store {
     }
 
 
-    // Customer Related Methods
+    // com.playops.model.Customer Related Methods
     public void addCustomer(Customer customer) {
         customers.add(customer);
-        System.out.println("Customer " + customer.getName() + " " + customer.getLastName() + " has been added.");
+        System.out.println("com.playops.model.Customer " + customer.getName() + " " + customer.getLastName() + " has been added.");
     }
 
     public Customer findCustomer(String name) {
@@ -79,14 +83,14 @@ public class Store {
         Customer customer = findCustomer(name);
         if (customer != null) {
             customers.remove(customer);
-            System.out.println("Customer " + name  + " has been removed.");
+            System.out.println("com.playops.model.Customer " + name  + " has been removed.");
         } else {
-            System.out.println("Customer " + name + " not found.");
+            System.out.println("com.playops.model.Customer " + name + " not found.");
         }
     }
 
     public void displayCustomers() {
-        System.out.println("\nCustomer List:");
+        System.out.println("\ncom.playops.model.Customer List:");
         if (customers.isEmpty()) {
             System.out.println("No customers registered.");
             return;

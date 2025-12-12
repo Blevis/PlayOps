@@ -1,4 +1,8 @@
-public class Game {
+package com.playops.model;
+
+import com.playops.interfaces.Buyable;
+
+public class Game implements Buyable {
     // Properties
     private static int nextId = 1;
     private final int id;

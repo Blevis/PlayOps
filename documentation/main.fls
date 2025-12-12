@@ -1,6 +1,6 @@
-PWD c:\Users\Blevis\Desktop\GitHub\PlayOps\documentation
+PWD c:\Users\Blevis\com.playops.model.Desktop\GitHub\PlayOps\documentation
 INPUT C:\Users\Blevis\AppData\Local\MiKTeX\miktex\data\le\pdftex\pdflatex.fmt
-INPUT c:\Users\Blevis\Desktop\GitHub\PlayOps\documentation\main.tex
+INPUT c:\Users\Blevis\com.playops.model.Desktop\GitHub\PlayOps\documentation\main.tex
 OUTPUT main.log
 INPUT C:\Users\Blevis\AppData\Local\Programs\MiKTeX\tex\latex\base\article.cls
 INPUT C:\Users\Blevis\AppData\Local\Programs\MiKTeX\tex\latex\base\article.cls
