@@ -53,6 +53,12 @@ public class Game extends Product implements Buyable {
         setQuantity(getQuantity()-1);
         return getPrice();
     }
+    public double calculateRentalPrice(int days) {
+        if (days <= 0)
+            throw new IllegalArgumentException("Rental days must be positive");
+
+        return pricePerDay * days;
+    }
 
     // To string
     @Override

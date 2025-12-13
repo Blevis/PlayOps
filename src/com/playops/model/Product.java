@@ -80,6 +80,27 @@ public abstract class Product {
     public boolean isAvailable() {
         return getQuantity() > 0;
     }
+    public void decreaseQuantity(int amount) {
+        if (amount <= 0)
+            throw new IllegalArgumentException("Decrease amount must be positive");
+        if (quantity < amount)
+            throw new IllegalArgumentException("Not enough quantity to decrease from");
+
+        quantity -= amount;
+    }
+    public int decreaseQuantityAndReturn(int amount){
+        decreaseQuantity(amount);
+        return quantity;
+    }
+    public void increaseQuantity(int amount){
+        if (amount <= 0)
+            throw new IllegalArgumentException("Increase amount must be positive");
+        quantity += amount;
+    }
+    public int increaseQuantityAndReturn(int amount){
+        increaseQuantity(amount);
+        return quantity;
+    }
 
     // To string
     @Override
