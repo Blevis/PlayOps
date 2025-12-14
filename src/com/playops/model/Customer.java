@@ -1,5 +1,6 @@
 package com.playops.model;
 
+import com.playops.exceptions.*;
 public class Customer {
 
     // Properties
@@ -41,7 +42,7 @@ public class Customer {
 
     public void setEmail(String email) {
         if (!isValidEmail(email))
-            throw new IllegalArgumentException("Invalid email format. Use a valid format like address@domain.com");
+            throw new InvalidEmailException("Invalid email format. Use a valid format like address@domain.com");
         this.email = email;
     }
 

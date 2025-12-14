@@ -1,6 +1,6 @@
 package com.playops.exceptions;
 
-public class InvalidEmailException  extends CustomException {
+public class InvalidEmailException  extends RuntimeException {
     public InvalidEmailException (String message) {
         super(message);
     }
