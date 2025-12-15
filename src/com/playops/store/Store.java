@@ -10,14 +10,13 @@ import java.io.IOException;
 import java.nio.file.*;
 import java.io.PrintWriter;
 
-import java.time.LocalDateTime;
 import java.util.*;
 
 public class Store {
     // Properties
-    private static final String INVENTORY_FILE = "inventory.txt";
-    private static final String CUSTOMER_FILE = "customers.txt";
-    private static final String TRANSACTIONS_FILE = "transactions.txt";
+    private static final String INVENTORY_FILE = "inventory.csv";
+    private static final String CUSTOMER_FILE = "customers.csv";
+    private static final String TRANSACTIONS_FILE = "transactions.csv";
     private String name;
     private ArrayList<Product> inventory = new ArrayList<>();
     private ArrayList<Customer> customers = new ArrayList<>();
@@ -465,7 +464,7 @@ public class Store {
     // Parse a line into Transaction
     private Transaction parseTransactionLine(String line) {
         String[] parts = line.split(",");
-        if (parts.length != 4) return null;
+        if (parts.length != 5) return null;
 
         try {
             Transaction.Type type = Transaction.Type.valueOf(parts[0].trim());
