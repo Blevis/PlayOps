@@ -107,6 +107,6 @@ public abstract class Product {
     public String toString(){
         return "[" + id + "] " + name + " | " + description +
                 " | Year: " + year + " | Quantity: " + quantity +
-                " | $" + price + " | $";
+                " | $" + price;
     }
 }
