@@ -33,10 +33,14 @@ public class Transaction {
     public double getAmount(){return amount;}
     public Type getType(){return type;}
     public LocalDateTime getTimestamp(){return timestamp;}
+    public Product getProduct() {return product;}
+    public Customer getCustomer() {return customer;}
 
     @Override
     public String toString(){
-        return type + " | " + product.getName() +
+        return type + " | " + customer.getName() +
+                " " + customer.getLastName() +
+                " | " + product.getName() +
                 " | $" + amount +
                 " | " + timestamp;
     }
