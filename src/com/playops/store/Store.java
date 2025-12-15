@@ -245,18 +245,6 @@ public class Store {
 
     /* |---------------------------------------- TRANSACTION -------------------------------------------------| */
     public void addTransaction(Transaction transaction) {
-        for (Transaction t : transactions) {
-            if (
-                    t.getProduct().getId() == transaction.getProduct().getId() &&
-                            t.getCustomer().getId() == transaction.getCustomer().getId() &&
-                            t.getType() == transaction.getType() &&
-                            t.getAmount() == transaction.getAmount() &&
-                            t.getTimestamp().equals(transaction.getTimestamp())
-            ) {
-                System.out.println("Duplicate transaction ignored.");
-                return;
-            }
-        }
         transactions.add(transaction);
     }
 
