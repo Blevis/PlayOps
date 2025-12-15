@@ -51,20 +51,19 @@ public class Store {
     }
 
     /* |---------------------------------------- INVENTORY -------------------------------------------------| */
-    public void addProduct(Product product){
-        boolean found = false;
+    public void addProduct(Product product) {
         for (Product p : inventory) {
             if (p.getId() == product.getId()) {
                 p.increaseQuantity(1);
-                found = true;
-                break;
+                System.out.println("Increased quantity of " + p.getName());
+                return;
             }
         }
-        if (!found) {
-            inventory.add(product);
-        }
+
+        inventory.add(product);
         System.out.println(product.getName() + " added to inventory.");
     }
+
 
     public void removeProduct(int id) throws ItemNotFoundException {
         Product product = findProductById(id);
@@ -155,9 +154,16 @@ public class Store {
 
     /* |---------------------------------------- CUSTOMER -------------------------------------------------| */
     public void addCustomer(Customer customer) {
+        for (Customer c : customers) {
+            if (c.getEmail().equalsIgnoreCase(customer.getEmail())) {
+                System.out.println("Customer already exists: " + customer.getEmail());
+                return;
+            }
+        }
         customers.add(customer);
-        System.out.println("Customer " + customer.getName() + " " + customer.getLastName() + " has been added.");
+        System.out.println("Customer " + customer.getName() + " added.");
     }
+
     public void removeCustomer(int id) throws ItemNotFoundException {
         Customer c = findCustomerById(id);
         customers.remove(c);
@@ -239,8 +245,21 @@ public class Store {
 
     /* |---------------------------------------- TRANSACTION -------------------------------------------------| */
     public void addTransaction(Transaction transaction) {
+        for (Transaction t : transactions) {
+            if (
+                    t.getProduct().getId() == transaction.getProduct().getId() &&
+                            t.getCustomer().getId() == transaction.getCustomer().getId() &&
+                            t.getType() == transaction.getType() &&
+                            t.getAmount() == transaction.getAmount() &&
+                            t.getTimestamp().equals(transaction.getTimestamp())
+            ) {
+                System.out.println("Duplicate transaction ignored.");
+                return;
+            }
+        }
         transactions.add(transaction);
     }
+
 
     public void displayTransactions() {
         System.out.println("\nTransactions list:");
