@@ -22,6 +22,19 @@ public abstract class Product {
         setPrice(price);
     }
 
+    public Product(int id, String name, String description, int year, int quantity, double price) {
+        this.id = id;
+        setName(name);
+        setDescription(description);
+        setYear(year);
+        setQuantity(quantity);
+        setPrice(price);
+
+        if (id >= nextId) {
+            nextId = id + 1;
+        }
+    }
+
     // Getters
     public int getId() {return id;}
     public String getName() {return name;}
