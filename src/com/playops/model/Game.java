@@ -50,7 +50,7 @@ public class Game extends Product implements Buyable {
     @Override
     public double buy() throws PaymentException{
         if(!isAvailable()) throw new PaymentException("No stock available");
-        setQuantity(getQuantity()-1);
+        decreaseQuantity(1);
         return getPrice();
     }
     public double calculateRentalPrice(int days) {

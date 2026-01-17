@@ -1,111 +1,149 @@
 @startuml
-class Customer {
-- {static} int nextId
-- int id
-- String name
-- String lastName
-- String email
-- String address
-+ <<Create>> Customer(String,String,String,String)
-+ int getId()
-+ String getName()
-+ void setName(String)
-+ String getLastName()
-+ void setLastName(String)
-+ String getEmail()
-+ void setEmail(String)
-+ String getAddress()
-+ void setAddress(String)
-- boolean isValidEmail(String)
-+ String toString()
+' ------------------------
+' Abstract Classes
+' ------------------------
+abstract class Product {
+    - int id
+    - String name
+    - String description
+    - int year
+    - int quantity
+    - double price
+    + getId()
+    + getName()
+    + getDescription()
+    + getYear()
+    + getQuantity()
+    + getPrice()
+    + increaseQuantity(int)
+    + decreaseQuantity(int)
+    + isAvailable()
+    + toString()
 }
 
-
-class Main {
-+ {static} void main(String[])
+abstract class Game {
+    - GameGenre genre
+    - GamePlatform platform
+    + getGenre()
+    + getPlatform()
 }
 
-class Store {
-- String name
-- ArrayList<Game> inventory
-- ArrayList<Customer> customers
-+ <<Create>> Store(String)
-+ String getName()
-+ void setName(String)
-+ void addGame(Game)
-+ void removeGame(String)
-+ Game findGame(String)
-+ void displayInventory()
-+ void addCustomer(Customer)
-+ Customer findCustomer(String)
-+ void removeCustomer(String)
-+ void displayCustomers()
+abstract class Hardware {
+    + buy() throws PaymentException
 }
 
-
-class Game {
-- {static} int nextId
-- int id
-- String title
-- int year
-- GameGenre genre
-- GamePlatform platform
-- String description
-- double pricePerDay
-- int quantity
-+ <<Create>> Game(String,int,Game.GameGenre,GamePlatform,String,double)
-+ int getId()
-+ String getTitle()
-+ void setTitle(String)
-+ int getYear()
-+ void setYear(int)
-+ GameGenre getGenre()
-+ void setGenre(GameGenre)
-+ GamePlatform getPlatform()
-+ void setPlatform(GamePlatform)
-+ String getDescription()
-+ void setDescription(String)
-+ double getPricePerDay()
-+ int getQuantity()
-+ void setQuantity(int)
-+ double calculateRentalCost(int)
-+ String toString()
+' ------------------------
+' Interfaces
+' ------------------------
+interface Buyable {
+    + buy() throws PaymentException
 }
 
-
-enum GameGenre {
-+  ACTION
-+  ADVENTURE
-+  ROLE_PLAYING
-+  SIMULATION
-+  STRATEGY
-+  SPORTS
-+  RACING
-+  FIGHTING
-+  HORROR
-+  PLATFORMER
-+  PUZZLE
-+  SANDBOX
-+  SHOOTER
-+  SURVIVAL
-+  STEALTH
+interface Rentable {
+    + rent(int days) throws InsufficientQuantityException, PaymentException
 }
 
-enum GamePlatform {
-+  PC
-+  MS_DOS
-+  Xbox
-+  PlayStation
-+  NintendoSwitch
-+  Nintendo64
-+  GameBoy
+interface PaymentMethod {
+    + pay(double amount) throws PaymentException
 }
 
-Store "1" --> "many" Customer : has >
-Store "1" --> "many" Game : manages >
-Game --> GameGenre : uses >
-Game --> GamePlatform : runs on >
-Main --> Store : creates >
+' ------------------------
+' Enums
+' ------------------------
+enum GameGenre{
+ACTION, ADVENTURE, RPG, STRATEGY, RACING
+}
+enum GamePlatform{
+PC, PlayStation, Xbox, Nintendo64
+}
+enum ConsoleBrand{
+SONY, MICROSOFT, NINTENDO, VALVE
+}
+enum DesktopBrand{
+DELL, HP, LENOVO, ASUS, ACER, CUSTOM
+}
+enum LaptopBrand{
+DELL, HP, LENOVO, ASUS, ACER, APPLE
+}
 
+' ------------------------
+' Exceptions
+' ------------------------
+class CustomException
+class FileProcessingException
+class InsufficientQuantityException
+class ItemNotFoundException
+class PaymentException
+
+' ------------------------
+' Concrete Classes
+' ------------------------
+class DigitalGame
+class PhysicalGame
+class Console
+class Desktop
+class Laptop
+class Customer
+class Transaction
+class Store
+class Main
+
+class CardPayment
+class CashPayment
+class PaymentProcessor
+
+' ------------------------
+' Inheritance / Implementation
+' ------------------------
+Product <|-- Game
+Product <|-- Hardware
+
+Game <|-- DigitalGame
+Game <|-- PhysicalGame
+Hardware <|-- Console
+Hardware <|-- Desktop
+Hardware <|-- Laptop
+
+Hardware ..|> Buyable
+PhysicalGame ..|> Rentable
+CardPayment ..|> PaymentMethod
+CashPayment ..|> PaymentMethod
+
+' ------------------------
+' Dependencies / Uses
+' ------------------------
+Store --> Product : manages
+Store --> Customer : manages
+Store --> Transaction : records
+Store --> PaymentProcessor : uses
+Store --> PaymentException : throws
+Store --> ItemNotFoundException : throws
+Store --> FileProcessingException : throws
+Store --> InsufficientQuantityException : throws
+
+Customer --> InvalidEmailException : throws
+Transaction --> Product
+Transaction --> Customer
+
+DigitalGame --> GameGenre
+DigitalGame --> GamePlatform
+PhysicalGame --> GameGenre
+PhysicalGame --> GamePlatform
+Console --> ConsoleBrand
+Desktop --> DesktopBrand
+Laptop --> LaptopBrand
+
+CardPayment --> PaymentException : throws
+CashPayment --> PaymentException : throws
+PaymentProcessor --> PaymentMethod
+PaymentProcessor --> PaymentException : throws
+
+Main --> Store : uses
+
+CustomException <|-- FileProcessingException
+CustomException <|-- InsufficientQuantityException
+CustomException <|-- ItemNotFoundException
+CustomException <|-- PaymentException
+CustomException <|-- InvalidEmailException
 
 @enduml

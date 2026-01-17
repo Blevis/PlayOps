@@ -15,7 +15,7 @@ public class PhysicalGame extends Game implements Rentable {
         if (days <= 0) throw new IllegalArgumentException("Days must be positive");
         if (!isAvailable()) throw new InsufficientQuantityException("No copies available to rent");
 
-        setQuantity(getQuantity()-1);
+        decreaseQuantity(1);
         return getPricePerDay()*days;
     }
 

@@ -1,84 +1,164 @@
-\documentclass[a4paper,12pt]{article}
-
+\documentclass[12pt]{article}
 \usepackage[utf8]{inputenc}
 \usepackage{geometry}
-\usepackage{graphicx}
-\usepackage{booktabs}
-\usepackage{array}
-\usepackage{titlesec}
+\usepackage{longtable}
 \usepackage{hyperref}
+\usepackage{enumitem}
+\usepackage{titlesec}
+\usepackage{fancyvrb}
+\usepackage{graphicx}
 
-\geometry{margin=1in}
+% Geometry
+\geometry{a4paper, margin=1in}
 
-\titleformat{\section}{\normalfont\Large\bfseries}{\thesection}{1em}{}
-\titleformat{\subsection}{\normalfont\large\bfseries}{\thesubsection}{1em}{}
-
-\title{\textbf{OOP Project Sprint 1\\Outline and Contribution Report}\\[1ex]
-\large \textit{PlayOps - A retro videogame rental system}}
-\author{
-Blevis Allushi, Kristjan Seraj\\
-\small University Metropolitan Tirana\\
-\small BSc in Artificial Intelligence\\
-\small \textbf{Assigning / Accepting Professor:} Prof. Evis Plaku
+% Hyperref setup for clickable links
+\hypersetup{
+    colorlinks=true,
+    linkcolor=blue,
+    urlcolor=blue
 }
-\date{\today}
+
+% Paragraph spacing
+\setlength{\parskip}{0.5em}
+\setlength{\parindent}{0pt}
+
+% Title
+\title{OOP Project Sprint 1 \& 2 Outline and Contribution Report}
+\author{PlayOps - A retro videogame \& gaming hardware retail logistics solution \\ BSc in Artificial Intelligence}
+\date{Assigning / Accepting Professor: Prof. Evis Plaku \\ December 15, 2025}
 
 \begin{document}
+
 \maketitle
+
 \tableofcontents
 \newpage
 
 \section{Project Overview}
-The \textbf{PlayOps} is a management system for game rental stores, specifically targeting the dwindling vintage games scene. It allows users to:
-\begin{itemize}
-  \item Add, remove, and search for customers and games.
-  \item Display game inventories and customers.
-  \item Manage game rentals and calculate rental costs.
-\end{itemize}
+PlayOps is a logistics solution designed for retailers focused on the selling and renting of video games, as well as the sale of gaming hardware. It allows operators to add, remove, search, display, and manage customers, transactions, and games.
 
-PlayOps development implements OOP prinicples such as encapsulation, modular design, and data abstraction.
+PlayOps strives to align with OOP principles, taking pride in its development process and maintaining crucial awareness to principles, such as those of:
+\begin{itemize}
+    \item \textbf{Sprint 1}: Fundamental object oriented design, management through arrays/lists encapsulation, modular design and data abstraction.
+    \item \textbf{Sprint 2}: Inheritance based - interface compliant design, polymorphic behavior, encapsulation with access modifiers, pre-implemented and custom exception handling, file persistence.
+\end{itemize}
 
 \section{UML Class Diagram}
 The UML diagram explains the structure and relationships of the components within this project.
 
 \begin{center}
-  \includegraphics[scale=0.3]{PlayOps.png}
+\includegraphics[scale=0.3]{PlayOps.png}
 \end{center}
 
-\section{Project Structure and Design}
+\section{Sprint 1}
+\subsection{Project Structure and Design}
+\begin{quote}
 The project follows a modular object-oriented structure:
 \begin{itemize}
-  \item \textbf{com.playops.model.Customer.java} — Manages customer data and an instance of validation in the email entries.
-  \item \textbf{com.playops.model.Game.java} — Represents the game properties and their attributes.
-  \item \textbf{com.playops.store.Store.java} — Manages lists of customers and games.
-  \item \textbf{com.playops.app.Main.java} — Entry point that handles user interaction.
+\item \textbf{com.playops.model.Customer.java} — Manages customer data and an instance of validation in the email entries.
+\item \textbf{com.playops.model.Game.java} — Represents the game properties and their attributes.
+\item \textbf{com.playops.store.Store.java} — Manages lists of customers and games.
+\item \textbf{com.playops.app.Main.java} — Entry point that handles user interaction.
 \end{itemize}
 
 Each class was designed with primary OOP philosophy of dividing work into classes with reusability and user convenience.
+\end{quote}
 
-\subsection*{Team Roles and Contributions}
-\begin{center}
-\begin{tabular}{>{\bfseries}m{3cm} m{10cm}}
-\toprule
+\section{Sprint 2}
+\subsection{Improved Project Structure and Design}
+Project design has relied on collaborative work heavily utilizing git.
+
+The updated structure altered the foundations in a way that honors the simplistic approach with few classes that have now expanded to a plethora of specialized single-purpose classes.
+
+The project utilizes the Product, Customer, and Transaction classes, all intertwined in the connecting Store class to do most of the heavy lifting, assisted by the interfaces and exceptions that make possible the seamless integration of methods catering to necessary functionality. Below is an ASCII representation of the logical implementation.
+
+{\small
+\begin{verbatim}
+com.playops
+|
++-- app
+|   +-- Main
+|       - Entry point of the application
+|       - Uses Store, Customers, Products, PaymentMethods, Transactions
+|
++-- exceptions
+|   +-- CustomException
+|   +-- FileProcessingException
+|   +-- InsufficientQuantityException
+|   +-- InvalidEmailException
+|   +-- ItemNotFoundException
+|   +-- PaymentException
+|       - Used by PaymentProcessor, Store, and PaymentMethod implementations
+|
++-- interfaces
+|   +-- Buyable
+|   |   - Implemented by Product/Game classes
+|   +-- PaymentMethod
+|   |   - Implemented by CardPayment, CashPayment
+|   +-- Rentable
+|       - Implemented by PhysicalGame
+|
++-- model
+|   +-- Product
+|   |   - Superclass of Hardware and Game
+|   |   - Implements Buyable
+|   |
+|   +-- Hardware
+|   |   +-- Console
+|   |   +-- Desktop
+|   |   +-- Laptop
+|   |
+|   +-- Game
+|   |   +-- DigitalGame
+|   |   +-- PhysicalGame (also implements Rentable)
+|   |
+|   +-- Customer
+|   |   - Used by Store and Transaction
+|   |
+|   +-- Transaction
+|       - References Product and Customer
+|       - Stored in Store
+|
++-- payment
+|   +-- PaymentProcessor
+|   |   - Processes PaymentMethod (CashPayment, CardPayment)
+|   +-- CardPayment
+|   +-- CashPayment
+|
++-- store
+    +-- Store
+        - Holds ArrayLists of Products, Customers, Transactions
+        - Performs buyProduct, rentGame, add/remove/display operations
+        - Uses PaymentProcessor to handle payments
+\end{verbatim}
+}
+
+\subsection{Inheritance, Polymorphism, Interfaces}
+The project architecture heavily relies on inheritance. The most evident example is that of the PhysicalGame, DigitalGame, Laptop, Desktop, Console classes. All these classes stem from a common abstract class, Product. Product provides the ambiguous definitions that all products have, and extends to a second layer of abstraction where the abstract classes of Game and Hardware lay the foundations for the former pair of atomic classes.
+
+Polymorphism and Interfaces work hand-in-hand, where polymorphism takes shape in the overriding of methods in classes implementing interfaces, populating fields demanded by the latter.
+
+\subsection{Exception Handling}
+Exceptions exist, and the way we handle them matters more and more. It is our weaknesses that make us stronger, and our response to stress, anxiety, panic and turmoil are what dictates if we stand strong in the real world. Similarly, by utilizing the exceptions class that enables the seamless interruption of an action that violates a constraint, we are able to have a logic smarter than checking values with if conditions. To access this powerful utilization we use try-catch blocks. By providing our expected runtime scenario in the try section, and the exceptions that may occur in the catch sections, we create an environment where all conditions that would violate a logical semantic operation are caught and tended to.
+
+A few examples of situations where the program catches exceptions and recovers can be found below. If these exceptions were to not be caught, in most cases, the default response from the JVM is to terminate.
+
+\begin{itemize}
+    \item \textbf{Missing Files:} If say, transactions.txt doesn’t exist, the message "No transactions file found. Starting fresh." is printed and the program proceeds to run.
+    \item \textbf{Invalid Input:} When a user tries to add a customer with an invalid email, the app prints the error but does not terminate.
+    \item \textbf{Payment Failures:} If a payment fails (usually insufficient payment), the app prints a failure message, and no transaction is recorded.
+    \item \textbf{Out of Stock:} If a product is unavailable, the purchase/rental is blocked, and the user is informed.
+\end{itemize}
+
+\section{Team Roles and Contributions}
+\begin{longtable}{p{4cm} p{11cm}}
 \textbf{Name} & \textbf{Responsibilities and Contributions} \\
-\midrule
-Blevis Allushi & Co-author and developer. Designed the overall class architecture and implemented (\texttt{com.playops.model.Customer}, \texttt{com.playops.model.Game}) classes, implemented key methods and restrictions via enumeration, finalized (\texttt{com.playops.app.Main}) after all work was submitted. Contributed to UML modeling and documentation structure. \\
-\addlinespace
-Kristjan Seraj & Co-author and developer. Implemented core functionality for connecting (\texttt{com.playops.model.Customer}, \texttt{com.playops.model.Game}) classes through the (\texttt{com.playops.store.Store}) class, implemented ArrayLists, developed search and display methods. Contributed equally to debugging, testing, and UML refinement. \\
-\bottomrule
-\end{tabular}
-\end{center}
-
-\subsection*{Collaboration Process}
-Blevis and Kristjan collaborated equally throughout all phases of the project. From the initial idea and planning to programming, testing and final documentation. Tasks were divided among the two, but major decisions and features were collectively discussed and decided upon.
+\hline
+Blevis Allushi & Co-author. Designed overall class architecture and populated most helper classes such as Customer, Transaction and Product as well as critical behavior in the (Store) class. Ensured key methods were present and validated. Implemented restrictions and exception handling. UML modelling and documentation. \\
+Kristjan Seraj & Co-author. Designed file I/O architecture and implemented proper logic and restrictions regarding the successful behavior. Populated and designed Main. Debugging and refinement. Ensured no errors propagated beyond main. Polishing work in UML and documentation. \\
+\end{longtable}
 
 \section{Reflection}
-This project was assigned to the 2025 class of AI \& Software Engineering at University Metropolitan Tirana, Tirana, Albania. First and foremost, this project was fun and entertaining. Although Sprint 1 was evidently not the most complex, it initiated enjoyable discourse not only within groups, but among them as well. It laid foundations for what it is like to work in pairs for the successful delivery of a project where each member's implementations are crucial and important in their respective ways. It suffices to say, no longer speaking for myself in third person, that I believe it engaged the class, hardened the knowledge gained up to this point in this course, and served as an entry to real-world expectations. In myself's and Kristjans group each of us gained experience in:
-\begin{itemize}
-  \item Designing maintainable class hierarchies.
-  \item Intertwining classes to achieve workflow and functionality.
-  \item Using collections effectively in Java.
-  \item Collaborating through Git-based workflows.
-  \item Documenting work through designing UML files and using LaTeX for official documentations. 
-\end{itemize}
+The second sprint possessed a much more interesting appeal. It encompassed more advanced OOP principles that kept the design process interesting and creative. The foundations laid in Sprint 1 paid off and were a testament to how Object Oriented Programming as a whole works and builds upon itself, as evidenced by Sprint 2.
+
 \end{document}
