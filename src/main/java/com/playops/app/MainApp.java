@@ -28,7 +28,7 @@ public class MainApp extends Application {
         storeService.initialize();
         AppContext.setStoreService(storeService);
 
-        // ---- DEBUG: show where CSVs are being loaded from + counts ----
+        // ---- DEBUGGING (accidentally broke loading :D) show where CSVs are being loaded from + counts ----
         Path cwd = Paths.get("").toAbsolutePath();
         System.out.println("=== PlayOps Startup ===");
         System.out.println("Working directory: " + cwd);
@@ -41,7 +41,7 @@ public class MainApp extends Application {
         System.out.println("=======================");
         // -------------------------------------------------------------
 
-        // Seed only if inventory is empty (prevents wiping leading to empty dashboard)
+        // Seed only if inventory is empty (lack of this broke loading)
         if (storeService.getAllProducts().isEmpty()) {
             Customer c1 = new Customer("Alice", "Johnson", "alice.johnson@example.com", "12 Maple Street");
             Customer c2 = new Customer("Bob", "Smith", "bob.smith@example.com", "8 Oak Avenue");

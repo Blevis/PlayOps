@@ -206,8 +206,6 @@ public final class ConsoleMain {
         }
         repo.save(kept);
 
-        // If you remove products, existing transactions may fail to load later (because they lookup product by name).
-        // This console intentionally keeps it simple; if needed we can also prune transactions here.
         TransactionRepository txRepo = new TransactionRepository();
         txRepo.save(txRepo.load());
     }
