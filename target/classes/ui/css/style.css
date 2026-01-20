@@ -1,0 +1,223 @@
+/* -------------------------
+   Global tuning
+   ------------------------- */
+.root {
+    -fx-font-family: "Inter", "Segoe UI", "SF Pro Display", "System";
+    -fx-font-smoothing-type: gray;
+}
+
+/* -------------------------
+   Backgrounds
+   ------------------------- */
+.login-background {
+    -fx-background-color: linear-gradient(to bottom right, #0b1220, #0f2b35, #123a4d);
+}
+
+.dashboard-background {
+    -fx-background-color: #0b0f14;
+}
+
+/* -------------------------
+   Typography
+   ------------------------- */
+.title-label {
+    -fx-font-size: 28px;
+    -fx-font-weight: 800;
+    -fx-text-fill: #f4f7fb;
+}
+
+.subtitle-label {
+    -fx-font-size: 14px;
+    -fx-text-fill: rgba(244, 247, 251, 0.72);
+}
+
+.section-title {
+    -fx-font-size: 16px;
+    -fx-font-weight: 700;
+    -fx-text-fill: #f4f7fb;
+}
+
+.hint-label {
+    -fx-font-size: 12px;
+    -fx-text-fill: rgba(244, 247, 251, 0.55);
+}
+
+/* -------------------------
+   Cards (panels)
+   ------------------------- */
+.card {
+    -fx-background-color: rgba(255, 255, 255, 0.06);
+    -fx-background-radius: 16;
+    -fx-border-color: rgba(255, 255, 255, 0.09);
+    -fx-border-radius: 16;
+
+    -fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.55), 16, 0.10, 0, 8);
+}
+
+.card-title {
+    -fx-font-size: 12px;
+    -fx-font-weight: 700;
+    -fx-text-fill: rgba(244, 247, 251, 0.65);
+    -fx-letter-spacing: 0.6px;
+}
+
+.card-value {
+    -fx-font-size: 26px;
+    -fx-font-weight: 800;
+    -fx-text-fill: #2ef2c5;
+}
+
+/* -------------------------
+   Inputs
+   ------------------------- */
+.text-field,
+.password-field {
+    -fx-background-color: rgba(255, 255, 255, 0.06);
+    -fx-text-fill: #f4f7fb;
+    -fx-prompt-text-fill: rgba(244, 247, 251, 0.45);
+
+    -fx-background-radius: 12;
+    -fx-border-radius: 12;
+    -fx-border-color: rgba(255, 255, 255, 0.10);
+
+    -fx-padding: 10 12;
+}
+
+.text-field:focused,
+.password-field:focused {
+    -fx-border-color: rgba(46, 242, 197, 0.85);
+    -fx-effect: dropshadow(three-pass-box, rgba(46, 242, 197, 0.25), 14, 0.25, 0, 0);
+}
+
+/* -------------------------
+   Buttons
+   ------------------------- */
+.btn-primary {
+    -fx-background-color: #2ef2c5;
+    -fx-text-fill: #0b0f14;
+    -fx-font-weight: 800;
+
+    -fx-background-radius: 12;
+    -fx-padding: 10 16;
+    -fx-cursor: hand;
+}
+
+.btn-primary:hover {
+    -fx-background-color: #24e3b8;
+}
+
+.btn-primary:pressed {
+    -fx-background-color: #1fd1a9;
+}
+
+/* Segmented toggle buttons */
+.segmented-btn {
+    -fx-background-color: rgba(255, 255, 255, 0.06);
+    -fx-text-fill: rgba(244, 247, 251, 0.82);
+    -fx-font-weight: 700;
+
+    -fx-border-color: rgba(255, 255, 255, 0.14);
+    -fx-border-width: 1;
+
+    -fx-padding: 8 12;
+    -fx-cursor: hand;
+}
+
+.segmented-btn:hover {
+    -fx-background-color: rgba(255, 255, 255, 0.09);
+}
+
+.segmented-btn:selected {
+    -fx-background-color: rgba(46, 242, 197, 0.18);
+    -fx-text-fill: #2ef2c5;
+    -fx-border-color: rgba(46, 242, 197, 0.55);
+}
+
+/* Rounded corners per segment */
+.segmented-left {
+    -fx-background-radius: 12 0 0 12;
+    -fx-border-radius: 12 0 0 12;
+}
+
+.segmented-middle {
+    -fx-background-radius: 0 0 0 0;
+    -fx-border-radius: 0 0 0 0;
+    -fx-border-width: 1 0 1 0; /* remove double borders between segments */
+}
+
+.segmented-right {
+    -fx-background-radius: 0 12 12 0;
+    -fx-border-radius: 0 12 12 0;
+}
+
+/* -------------------------
+   Charts (modern dark theme)
+   ------------------------- */
+.chart {
+    -fx-background-color: transparent;
+}
+
+.chart-plot-background {
+    -fx-background-color: rgba(255, 255, 255, 0.03);
+    -fx-background-radius: 12;
+}
+
+.chart-content {
+    -fx-padding: 10;
+}
+
+.chart-legend {
+    -fx-background-color: transparent;
+}
+
+.chart-title {
+    -fx-text-fill: #f4f7fb;
+}
+
+.axis {
+    -fx-tick-label-fill: rgba(244, 247, 251, 0.70);
+}
+
+.axis-label {
+    -fx-text-fill: rgba(244, 247, 251, 0.70);
+}
+
+.axis-tick-mark {
+    -fx-stroke: rgba(255, 255, 255, 0.12);
+}
+
+.axis-minor-tick-mark {
+    -fx-stroke: rgba(255, 255, 255, 0.08);
+}
+
+.chart-horizontal-grid-lines {
+    -fx-stroke: rgba(255, 255, 255, 0.07);
+}
+
+.chart-vertical-grid-lines {
+    -fx-stroke: rgba(255, 255, 255, 0.07);
+}
+
+.default-color0.chart-series-line {
+    -fx-stroke: #2ef2c5;
+    -fx-stroke-width: 2.5px;
+}
+
+.default-color0.chart-line-symbol {
+    -fx-background-color: #2ef2c5, #0b0f14;
+    -fx-background-insets: 0, 2;
+    -fx-background-radius: 10px;
+    -fx-padding: 5px;
+}
+
+.default-color0.chart-bar {
+    -fx-bar-fill: #2ef2c5;
+}
+
+.tooltip {
+    -fx-background-color: rgba(15, 20, 30, 0.95);
+    -fx-text-fill: #f4f7fb;
+    -fx-background-radius: 10;
+    -fx-padding: 8 10;
+    -fx-font-size: 12px;
+}

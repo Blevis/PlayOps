@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.chart.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="com.playops.controllers.DashboardController"
+            styleClass="dashboard-background">
+
+    <padding>
+        <Insets top="20" right="20" bottom="20" left="20"/>
+    </padding>
+
+    <top>
+        <HBox spacing="12" alignment="CENTER_LEFT" BorderPane.alignment="CENTER">
+            <Label text="Admin Dashboard" styleClass="title-label"/>
+
+            <Region HBox.hgrow="ALWAYS"/>
+
+            <Button text="Refresh"
+                    onAction="#refreshData"
+                    styleClass="btn-primary"/>
+        </HBox>
+    </top>
+
+    <center>
+        <VBox spacing="16">
+            <GridPane hgap="16" vgap="16">
+                <columnConstraints>
+                    <ColumnConstraints percentWidth="50" hgrow="ALWAYS"/>
+                    <ColumnConstraints percentWidth="50" hgrow="ALWAYS"/>
+                </columnConstraints>
+
+                <VBox spacing="8" styleClass="card" GridPane.rowIndex="0" GridPane.columnIndex="0">
+                    <padding>
+                        <Insets top="14" right="14" bottom="14" left="14"/>
+                    </padding>
+                    <Label text="TOTAL SALES" styleClass="card-title"/>
+                    <Label fx:id="totalSalesLabel" text="\$0.00" styleClass="card-value"/>
+                </VBox>
+
+                <VBox spacing="8" styleClass="card" GridPane.rowIndex="0" GridPane.columnIndex="1">
+                    <padding>
+                        <Insets top="14" right="14" bottom="14" left="14"/>
+                    </padding>
+                    <Label text="TOTAL PRODUCTS IN STOCK" styleClass="card-title"/>
+                    <Label fx:id="totalProductsLabel" text="0" styleClass="card-value"/>
+                </VBox>
+
+                <VBox spacing="10" styleClass="card" GridPane.rowIndex="1" GridPane.columnIndex="0" GridPane.columnSpan="2">
+                    <padding>
+                        <Insets top="14" right="14" bottom="14" left="14"/>
+                    </padding>
+                    <Label text="Sales (Last 14 Days)" styleClass="section-title"/>
+
+                    <LineChart fx:id="salesChart" animated="false" createSymbols="true" legendVisible="false" prefHeight="300">
+                        <xAxis>
+                            <CategoryAxis label="Date"/>
+                        </xAxis>
+                        <yAxis>
+                            <NumberAxis label="Revenue"/>
+                        </yAxis>
+                    </LineChart>
+                </VBox>
+
+                <VBox spacing="10" styleClass="card" GridPane.rowIndex="2" GridPane.columnIndex="0" GridPane.columnSpan="2">
+                    <padding>
+                        <Insets top="14" right="14" bottom="14" left="14"/>
+                    </padding>
+
+                    <HBox spacing="10" alignment="CENTER_LEFT">
+                        <Label text="Products Stock" styleClass="section-title"/>
+
+                        <Region HBox.hgrow="ALWAYS"/>
+
+                        <fx:define>
+                            <ToggleGroup fx:id="productsToggleGroup"/>
+                        </fx:define>
+
+                        <ToggleButton fx:id="top10Toggle"
+                                      text="Top 10"
+                                      toggleGroup="$productsToggleGroup"
+                                      onAction="#showTop10Products"
+                                      styleClass="segmented-btn segmented-left"/>
+
+                        <ToggleButton fx:id="allToggle"
+                                      text="All"
+                                      toggleGroup="$productsToggleGroup"
+                                      onAction="#showAllProducts"
+                                      styleClass="segmented-btn segmented-middle"/>
+
+                        <ToggleButton fx:id="lowStockToggle"
+                                      text="Low Stock"
+                                      toggleGroup="$productsToggleGroup"
+                                      onAction="#showLowStockProducts"
+                                      styleClass="segmented-btn segmented-right"/>
+                    </HBox>
+
+                    <BarChart fx:id="productsChart" animated="false" legendVisible="false" prefHeight="320" categoryGap="8" barGap="2">
+                        <xAxis>
+                            <CategoryAxis label="Product"/>
+                        </xAxis>
+                        <yAxis>
+                            <NumberAxis label="Units in Stock"/>
+                        </yAxis>
+                    </BarChart>
+                </VBox>
+            </GridPane>
+        </VBox>
+    </center>
+</BorderPane>

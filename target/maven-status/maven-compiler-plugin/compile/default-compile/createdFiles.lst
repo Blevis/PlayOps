@@ -12,7 +12,6 @@ com\playops\controllers\DashboardController.class
 com\playops\service\StoreService.class
 com\playops\model\Laptop$Brand.class
 com\playops\repository\TransactionRepository.class
-com\playops\service\AdminService$AdminRecord.class
 com\playops\model\Transaction$Type.class
 com\playops\exceptions\PaymentException.class
 com\playops\model\Console.class
