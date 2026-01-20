@@ -47,18 +47,18 @@ public class Main {
             System.out.println(">>> Adding products to inventory...");
 
             // Digital Games
-            DigitalGame digitalGame1 = new DigitalGame(
-                    "CyberQuest",
+            DigitalGame cyberPunk = new DigitalGame(
+                    "CyberPunk 2077",
                     "Sci-fi adventure",
-                    2025,
+                    2020,
                     5,
                     50.00,
                     Game.GameGenre.ACTION,
                     Game.GamePlatform.PC
             );
 
-            DigitalGame digitalGame2 = new DigitalGame(
-                    "Mystic Realm",
+            DigitalGame astroBot = new DigitalGame(
+                    "Astro Bot",
                     "Fantasy adventure",
                     2024,
                     3,
@@ -68,26 +68,26 @@ public class Main {
             );
 
             // Physical Games (Rentable)
-            PhysicalGame physicalGame1 = new PhysicalGame(
-                    "FantasyLand",
+            PhysicalGame pacman = new PhysicalGame(
+                    "Pac Man",
                     "Fantasy RPG",
-                    2024,
+                    1980,
                     3,
-                    60.00,
-                    7.00,
-                    Game.GameGenre.ROLE_PLAYING,
-                    Game.GamePlatform.PC
+                    20.00,
+                    4.00,
+                    Game.GameGenre.STRATEGY,
+                    Game.GamePlatform.Nintendo64
             );
 
-            PhysicalGame physicalGame2 = new PhysicalGame(
-                    "Racing Legends",
+            PhysicalGame NFSHP2 = new PhysicalGame(
+                    "Need for Speed: Hot Pursuit 2",
                     "High-speed racing game",
-                    2023,
+                    2002,
                     2,
-                    55.00,
-                    8.00,
+                    40.00,
+                    4.00,
                     Game.GameGenre.RACING,
-                    Game.GamePlatform.Xbox
+                    Game.GamePlatform.PC
             );
 
             // Consoles
@@ -146,10 +146,10 @@ public class Main {
             );
 
             // Add all products to the inventory
-            store.addProduct(digitalGame1);
-            store.addProduct(digitalGame2);
-            store.addProduct(physicalGame1);
-            store.addProduct(physicalGame2);
+            store.addProduct(cyberPunk);
+            store.addProduct(astroBot);
+            store.addProduct(pacman);
+            store.addProduct(NFSHP2);
             store.addProduct(ps5);
             store.addProduct(xbox);
             store.addProduct(gamingDesktop);
@@ -173,7 +173,7 @@ public class Main {
             // Purchase 1: Digital Game with Cash
             System.out.println("\n--- Purchase 1: Digital Game (Cash) ---");
             PaymentMethod cashPayment1 = new CashPayment(100.00);
-            store.buyProduct(digitalGame1.getId(), customer1, cashPayment1);
+            store.buyProduct(astroBot.getId(), customer1, cashPayment1);
 
             // Purchase 2: Console with Card
             System.out.println("\n--- Purchase 2: Console (Card) ---");
@@ -195,12 +195,12 @@ public class Main {
             // Rental 1: Physical Game for 3 days
             System.out.println("\n--- Rental 1: Physical Game (3 days) ---");
             PaymentMethod rentCash1 = new CashPayment(50.00);
-            store.rentGame(physicalGame1.getId(), customer4, rentCash1, 3);
+            store.rentGame(pacman.getId(), customer4, rentCash1, 3);
 
             // Rental 2: Physical Game for 5 days
             System.out.println("\n--- Rental 2: Physical Game (5 days) ---");
             PaymentMethod rentCash2 = new CashPayment(60.00);
-            store.rentGame(physicalGame2.getId(), customer2, rentCash2, 5);
+            store.rentGame(NFSHP2.getId(), customer2, rentCash2, 5);
 
             System.out.println();
 
@@ -256,7 +256,7 @@ public class Main {
             try {
                 System.out.println("\n--- Attempting purchase with insufficient cash ---");
                 PaymentMethod insufficientCash = new CashPayment(10.00);
-                store.buyProduct(digitalGame2.getId(), customer1, insufficientCash);
+                store.buyProduct(astroBot.getId(), customer1, insufficientCash);
             } catch (PaymentException e) {
                 System.out.println("Payment validation caught: " + e.getMessage());
             }

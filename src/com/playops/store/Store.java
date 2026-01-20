@@ -132,18 +132,29 @@ public class Store {
 
         try {
             int loadedCount = 0;
+            int errorCount = 0;
             List<String> lines = Files.readAllLines(Paths.get(INVENTORY_FILE));
             for (int i = 1; i < lines.size(); i++) {
                 String line = lines.get(i);
                 if (line.trim().isEmpty()) continue;
-                Product product = parseProductLine(line);
-                if (product != null) {
-                    inventory.add(product);
-                    loadedCount++;
+                try {
+                    Product product = parseProductLine(line);
+                    if (product != null) {
+                        inventory.add(product);
+                        loadedCount++;
+                    }
+                } catch (FileProcessingException e) {
+                    errorCount++;
+                    System.out.println("Skipping invalid product line " + (i + 1) + ": " + e.getMessage());
                 }
             }
             if (loadedCount > 0) {
                 System.out.println("Inventory file loaded successfully. (" + loadedCount + " items)");
+                if (errorCount > 0) {
+                    System.out.println("Warning: " + errorCount + " product(s) could not be loaded.");
+                }
+            } else if (errorCount > 0) {
+                System.out.println("Inventory file contains errors. No valid products loaded.");
             } else {
                 System.out.println("Inventory file is empty. Starting fresh.");
             }
@@ -231,7 +242,7 @@ public class Store {
 
     public void saveCustomers() throws FileProcessingException {
         try (PrintWriter writer = new PrintWriter(new FileWriter(CUSTOMER_FILE))) {
-            writer.println("Id,Type,Name,Last Name,Email,Address");
+            writer.println("Id,Name,Last Name,Email,Address");
             for (Customer customer : customers) {
                 writer.println(customer.getId() + "," + customer.getName() + "," +
                         customer.getLastName() + "," + customer.getEmail() + "," +
@@ -245,18 +256,6 @@ public class Store {
 
     /* |---------------------------------------- TRANSACTION -------------------------------------------------| */
     public void addTransaction(Transaction transaction) {
-        for (Transaction t : transactions) {
-            if (
-                    t.getProduct().getId() == transaction.getProduct().getId() &&
-                            t.getCustomer().getId() == transaction.getCustomer().getId() &&
-                            t.getType() == transaction.getType() &&
-                            t.getAmount() == transaction.getAmount() &&
-                            t.getTimestamp().equals(transaction.getTimestamp())
-            ) {
-                System.out.println("Duplicate transaction ignored.");
-                return;
-            }
-        }
         transactions.add(transaction);
     }
 
@@ -495,8 +494,14 @@ public class Store {
             Customer customer = findCustomerByName(customerName);
 
             return new Transaction(product, customer, type, amount);
+        } catch (ItemNotFoundException e) {
+            System.out.println("Error parsing transaction line - item not found: " + line + " - " + e.getMessage());
+            return null;
+        } catch (IllegalArgumentException e) {
+            System.out.println("Error parsing transaction line - invalid format: " + line + " - " + e.getMessage());
+            return null;
         } catch (Exception e) {
-            System.out.println("Error parsing transaction line: " + e.getMessage());
+            System.out.println("Error parsing transaction line: " + line + " - " + e.getMessage());
             return null;
         }
     }
