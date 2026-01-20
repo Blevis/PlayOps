@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="com.playops.controllers.LoginController"
+            styleClass="login-background">
+
+    <padding>
+        <Insets top="32" right="32" bottom="32" left="32"/>
+    </padding>
+
+    <center>
+        <VBox alignment="CENTER" spacing="18" maxWidth="420" BorderPane.alignment="CENTER">
+            <Label text="PlayOps" styleClass="title-label"/>
+            <Label text="Admin Sign In" styleClass="subtitle-label"/>
+
+            <VBox spacing="12" alignment="CENTER" styleClass="card" maxWidth="420">
+                <padding>
+                    <Insets top="18" right="18" bottom="18" left="18"/>
+                </padding>
+
+                <GridPane hgap="12" vgap="12">
+                    <columnConstraints>
+                        <ColumnConstraints percentWidth="100"/>
+                    </columnConstraints>
+
+                    <TextField fx:id="usernameField" promptText="Username" GridPane.rowIndex="0" GridPane.columnIndex="0"/>
+                    <PasswordField fx:id="passwordField" promptText="Password" GridPane.rowIndex="1" GridPane.columnIndex="0"/>
+
+                    <Button fx:id="loginButton"
+                            text="Login"
+                            onAction="#handleLogin"
+                            maxWidth="1.7976931348623157E308"
+                            styleClass="btn-primary"
+                            GridPane.rowIndex="2" GridPane.columnIndex="0"/>
+
+                    <Label fx:id="errorLabel"
+                           textFill="red"
+                           wrapText="true"
+                           GridPane.rowIndex="3" GridPane.columnIndex="0"/>
+                </GridPane>
+            </VBox>
+
+            <Label text="Tip: Your admin accounts are stored securely in admins.csv" styleClass="hint-label" wrapText="true"/>
+        </VBox>
+    </center>
+</BorderPane>

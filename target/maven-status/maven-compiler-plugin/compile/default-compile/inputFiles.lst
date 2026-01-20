@@ -1,7 +1,8 @@
-C:\Users\Blevis\Desktop\GitHub\PlayOps\src\main\java\com\playops\app\Main.java
+C:\Users\Blevis\Desktop\GitHub\PlayOps\src\main\java\com\playops\app\AppContext.java
+C:\Users\Blevis\Desktop\GitHub\PlayOps\src\main\java\com\playops\app\ConsoleMain.java
 C:\Users\Blevis\Desktop\GitHub\PlayOps\src\main\java\com\playops\app\MainApp.java
-C:\Users\Blevis\Desktop\GitHub\PlayOps\src\main\java\com\playops\controllers\AdminLoginController.java
 C:\Users\Blevis\Desktop\GitHub\PlayOps\src\main\java\com\playops\controllers\DashboardController.java
+C:\Users\Blevis\Desktop\GitHub\PlayOps\src\main\java\com\playops\controllers\LoginController.java
 C:\Users\Blevis\Desktop\GitHub\PlayOps\src\main\java\com\playops\exceptions\CustomException.java
 C:\Users\Blevis\Desktop\GitHub\PlayOps\src\main\java\com\playops\exceptions\FileProcessingException.java
 C:\Users\Blevis\Desktop\GitHub\PlayOps\src\main\java\com\playops\exceptions\InsufficientQuantityException.java
@@ -27,5 +28,5 @@ C:\Users\Blevis\Desktop\GitHub\PlayOps\src\main\java\com\playops\payment\Payment
 C:\Users\Blevis\Desktop\GitHub\PlayOps\src\main\java\com\playops\repository\CustomerRepository.java
 C:\Users\Blevis\Desktop\GitHub\PlayOps\src\main\java\com\playops\repository\ProductRepository.java
 C:\Users\Blevis\Desktop\GitHub\PlayOps\src\main\java\com\playops\repository\TransactionRepository.java
+C:\Users\Blevis\Desktop\GitHub\PlayOps\src\main\java\com\playops\service\AdminService.java
 C:\Users\Blevis\Desktop\GitHub\PlayOps\src\main\java\com\playops\service\StoreService.java
-C:\Users\Blevis\Desktop\GitHub\PlayOps\src\main\java\com\playops\store\Store.java

@@ -1,1 +1,4 @@
 Type,Customer,Product,Price,Time
+BUY,Alice Johnson,Elden Ring,59.99,2026-01-20T18:57:48.404285600
+BUY,Bob Smith,PlayStation 5,499.99,2026-01-20T18:57:48.404285600
+RENT,Alice Johnson,Mario Kart 8 Deluxe,10.5,2026-01-20T18:57:48.404285600

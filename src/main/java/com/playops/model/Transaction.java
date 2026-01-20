@@ -29,6 +29,23 @@ public class Transaction {
         this.timestamp = LocalDateTime.now();
     }
 
+    public Transaction(Product product, Customer customer, Type type, double amount, LocalDateTime timestamp) {
+        if (product == null || customer == null){
+            throw new IllegalArgumentException("Product/Customer cannot be null");
+        }
+        if (amount <= 0)
+            throw new IllegalArgumentException("Transaction amount must be positive");
+        if (timestamp == null) {
+            throw new IllegalArgumentException("Timestamp cannot be null");
+        }
+
+        this.product = product;
+        this.customer = customer;
+        this.type = type;
+        this.amount = amount;
+        this.timestamp = timestamp;
+    }
+
     // Getters
     public double getAmount(){return amount;}
     public Type getType(){return type;}

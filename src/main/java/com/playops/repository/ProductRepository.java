@@ -23,6 +23,12 @@ public class ProductRepository {
         } catch (IOException e) {
             throw new FileProcessingException("Failed to save inventory file: " + e.getMessage());
         }
+
+        productsList = new ArrayList<>(products);
+        productsById.clear();
+        for (Product p : productsList) {
+            productsById.put(p.getId(), p);
+        }
     }
 
     public List<Product> load() throws FileProcessingException {

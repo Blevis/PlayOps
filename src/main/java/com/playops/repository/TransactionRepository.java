@@ -36,6 +36,7 @@ public class TransactionRepository {
         } catch (IOException e) {
             throw new FileProcessingException("Failed to save transaction file: " + e.getMessage());
         }
+        this.transactions = new ArrayList<>(transactions);
     }
 
     public List<Transaction> load() throws FileProcessingException {
@@ -62,6 +63,7 @@ public class TransactionRepository {
         } catch (IOException e) {
             throw new FileProcessingException("Failed to load transaction file: " + e.getMessage());
         }
+
         return transactions;
     }
 
@@ -82,13 +84,13 @@ public class TransactionRepository {
             String customerName = parts[1].trim();
             String productName = parts[2].trim();
             double amount = Double.parseDouble(parts[3].trim());
-            LocalDateTime timestamp = LocalDateTime.parse(parts[4].trim(),
-                    DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm:ss"));
+
+            LocalDateTime timestamp = LocalDateTime.parse(parts[4].trim(), DateTimeFormatter.ISO_LOCAL_DATE_TIME);
 
             Product product = storeService.findProductByName(productName);
             Customer customer = storeService.findCustomerByName(customerName);
 
-            return new Transaction(product, customer, type, amount);
+            return new Transaction(product, customer, type, amount, timestamp);
         } catch (Exception e) {
             return null;
         }

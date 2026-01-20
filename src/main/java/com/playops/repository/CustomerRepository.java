@@ -26,7 +26,16 @@ public class CustomerRepository {
         } catch (IOException e) {
             throw new FileProcessingException("Failed to save customers file: " + e.getMessage());
         }
+
+        customersList = new ArrayList<>(customers);
+        customersById.clear();
+        customersByEmail.clear();
+        for (Customer c : customersList) {
+            customersById.put(c.getId(), c);
+            customersByEmail.put(c.getEmail().toLowerCase(), c);
+        }
     }
+
 
     public List<Customer> load() throws FileProcessingException {
         customersById.clear();
