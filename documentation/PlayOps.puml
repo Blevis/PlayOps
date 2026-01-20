@@ -1,149 +1,263 @@
 @startuml
-' ------------------------
-' Abstract Classes
-' ------------------------
-abstract class Product {
-    - int id
-    - String name
-    - String description
-    - int year
-    - int quantity
-    - double price
-    + getId()
-    + getName()
-    + getDescription()
-    + getYear()
-    + getQuantity()
-    + getPrice()
-    + increaseQuantity(int)
-    + decreaseQuantity(int)
-    + isAvailable()
-    + toString()
+title PlayOps
+left to right direction
+skinparam shadowing false
+skinparam linetype ortho
+skinparam classAttributeIconSize 0
+skinparam packageStyle rectangle
+
+' -------------------------
+' Color by stereotype
+' -------------------------
+skinparam class<<UI>> {
+  BackgroundColor #E0F2FE
+  BorderColor #0369A1
+}
+skinparam class<<Controller>> {
+  BackgroundColor #E0F2FE
+  BorderColor #0369A1
+}
+skinparam class<<App>> {
+  BackgroundColor #E0F2FE
+  BorderColor #0369A1
+}
+skinparam class<<CLI>> {
+  BackgroundColor #E0F2FE
+  BorderColor #0369A1
+}
+skinparam class<<Service>> {
+  BackgroundColor #ECFDF5
+  BorderColor #047857
+}
+skinparam class<<Repository>> {
+  BackgroundColor #F3E8FF
+  BorderColor #7C3AED
+}
+skinparam class<<Model>> {
+  BackgroundColor #FFF7ED
+  BorderColor #C2410C
+}
+skinparam class<<Interface>> {
+  BackgroundColor #FFF7ED
+  BorderColor #C2410C
+}
+skinparam class<<Enum>> {
+  BackgroundColor #FFF7ED
+  BorderColor #C2410C
+}
+skinparam class<<Exception>> {
+  BackgroundColor #FEE2E2
+  BorderColor #B91C1C
+}
+skinparam class<<Resource>> {
+  BackgroundColor #E5E7EB
+  BorderColor #374151
+}
+skinparam class<<CSV>> {
+  BackgroundColor #E5E7EB
+  BorderColor #374151
 }
 
-abstract class Game {
-    - GameGenre genre
-    - GamePlatform platform
-    + getGenre()
-    + getPlatform()
+legend right
+|= Color |= Meaning |
+|<#E0F2FE> UI / JavaFX |
+|<#ECFDF5> Services |
+|<#F3E8FF> Repositories |
+|<#FFF7ED> Domain model |
+|<#FEE2E2> Exceptions |
+|<#E5E7EB> Files / resources |
+endlegend
+
+' =========================
+' UI layer
+' =========================
+package "UI (JavaFX)" {
+
+  package "com.playops.app" {
+    class AppContext <<App>>
+    class MainApp <<App>>
+    class ConsoleMain <<CLI>>
+  }
+
+  package "com.playops.controllers" {
+    class LoginController <<Controller>>
+    class DashboardController <<Controller>>
+  }
+
+  package "resources/ui" {
+    class "login.fxml" as login_fxml <<Resource>>
+    class "DashboardView.fxml" as dash_fxml <<Resource>>
+    class "style.css" as css <<Resource>>
+  }
 }
 
-abstract class Hardware {
-    + buy() throws PaymentException
+' =========================
+' Services / Repos
+' =========================
+package "Application Core" {
+
+  package "com.playops.service" {
+    class StoreService <<Service>>
+    class AdminService <<Service>>
+    class AuthResult <<Model>>
+  }
+
+  package "com.playops.repository" {
+    class CustomerRepository <<Repository>>
+    class ProductRepository <<Repository>>
+    class TransactionRepository <<Repository>>
+  }
 }
 
-' ------------------------
-' Interfaces
-' ------------------------
-interface Buyable {
-    + buy() throws PaymentException
+' =========================
+' Domain model
+' =========================
+package "Domain Model" {
+
+  package "com.playops.interfaces" {
+    interface PaymentMethod <<Interface>>
+    interface Buyable <<Interface>>
+    interface Rentable <<Interface>>
+  }
+
+  package "com.playops.payment" {
+    class PaymentProcessor <<Model>>
+    class CashPayment <<Model>>
+    class CardPayment <<Model>>
+  }
+
+  package "com.playops.model" {
+    abstract class Product <<Model>>
+    abstract class Game <<Model>>
+    abstract class Hardware <<Model>>
+
+    class DigitalGame <<Model>>
+    class PhysicalGame <<Model>>
+
+    class Console <<Model>>
+    class Desktop <<Model>>
+    class Laptop <<Model>>
+
+    class Customer <<Model>>
+    class Transaction <<Model>>
+
+    enum "Transaction.Type" as TxType <<Enum>>
+    enum "Game.GameGenre" as GameGenre <<Enum>>
+    enum "Game.GamePlatform" as GamePlatform <<Enum>>
+    enum "Console.Brand" as ConsoleBrand <<Enum>>
+    enum "Desktop.Brand" as DesktopBrand <<Enum>>
+    enum "Laptop.Brand" as LaptopBrand <<Enum>>
+  }
 }
 
-interface Rentable {
-    + rent(int days) throws InsufficientQuantityException, PaymentException
-}
-
-interface PaymentMethod {
-    + pay(double amount) throws PaymentException
-}
-
-' ------------------------
-' Enums
-' ------------------------
-enum GameGenre{
-ACTION, ADVENTURE, RPG, STRATEGY, RACING
-}
-enum GamePlatform{
-PC, PlayStation, Xbox, Nintendo64
-}
-enum ConsoleBrand{
-SONY, MICROSOFT, NINTENDO, VALVE
-}
-enum DesktopBrand{
-DELL, HP, LENOVO, ASUS, ACER, CUSTOM
-}
-enum LaptopBrand{
-DELL, HP, LENOVO, ASUS, ACER, APPLE
-}
-
-' ------------------------
+' =========================
 ' Exceptions
-' ------------------------
-class CustomException
-class FileProcessingException
-class InsufficientQuantityException
-class ItemNotFoundException
-class PaymentException
+' =========================
+package "Exceptions" {
+  package "com.playops.exceptions" {
+    class CustomException <<Exception>>
+    class FileProcessingException <<Exception>>
+    class InsufficientQuantityException <<Exception>>
+    class ItemNotFoundException <<Exception>>
+    class PaymentException <<Exception>>
+    class InvalidEmailException <<Exception>>
+  }
+}
 
-' ------------------------
-' Concrete Classes
-' ------------------------
-class DigitalGame
-class PhysicalGame
-class Console
-class Desktop
-class Laptop
-class Customer
-class Transaction
-class Store
-class Main
+' =========================
+' Persistence (CSV files)
+' =========================
+package "CSV Persistence" {
+  class "admins.csv" as admins_csv <<CSV>>
+  class "customers.csv" as customers_csv <<CSV>>
+  class "inventory.csv" as inventory_csv <<CSV>>
+  class "transactions.csv" as transactions_csv <<CSV>>
+}
 
-class CardPayment
-class CashPayment
-class PaymentProcessor
-
-' ------------------------
-' Inheritance / Implementation
-' ------------------------
+' =========================
+' Inheritance / Interfaces
+' =========================
 Product <|-- Game
 Product <|-- Hardware
 
 Game <|-- DigitalGame
 Game <|-- PhysicalGame
+
 Hardware <|-- Console
 Hardware <|-- Desktop
 Hardware <|-- Laptop
 
-Hardware ..|> Buyable
-PhysicalGame ..|> Rentable
-CardPayment ..|> PaymentMethod
-CashPayment ..|> PaymentMethod
+Buyable <|.. Game
+Buyable <|.. Hardware
+Rentable <|.. PhysicalGame
 
-' ------------------------
-' Dependencies / Uses
-' ------------------------
-Store --> Product : manages
-Store --> Customer : manages
-Store --> Transaction : records
-Store --> PaymentProcessor : uses
-Store --> PaymentException : throws
-Store --> ItemNotFoundException : throws
-Store --> FileProcessingException : throws
-Store --> InsufficientQuantityException : throws
-
-Customer --> InvalidEmailException : throws
-Transaction --> Product
-Transaction --> Customer
-
-DigitalGame --> GameGenre
-DigitalGame --> GamePlatform
-PhysicalGame --> GameGenre
-PhysicalGame --> GamePlatform
-Console --> ConsoleBrand
-Desktop --> DesktopBrand
-Laptop --> LaptopBrand
-
-CardPayment --> PaymentException : throws
-CashPayment --> PaymentException : throws
-PaymentProcessor --> PaymentMethod
-PaymentProcessor --> PaymentException : throws
-
-Main --> Store : uses
+PaymentMethod <|.. CashPayment
+PaymentMethod <|.. CardPayment
 
 CustomException <|-- FileProcessingException
 CustomException <|-- InsufficientQuantityException
 CustomException <|-- ItemNotFoundException
 CustomException <|-- PaymentException
-CustomException <|-- InvalidEmailException
+
+' =========================
+' Core associations
+' =========================
+Transaction --> Product : product
+Transaction --> Customer : customer
+Transaction --> TxType : type
+
+Game --> GameGenre
+Game --> GamePlatform
+Console --> ConsoleBrand
+Desktop --> DesktopBrand
+Laptop --> LaptopBrand
+
+Customer ..> InvalidEmailException : may throw
+
+CashPayment ..> PaymentException : may throw
+CardPayment ..> PaymentException : may throw
+PaymentProcessor ..> PaymentException : may throw
+
+StoreService ..> FileProcessingException
+StoreService ..> ItemNotFoundException
+StoreService ..> PaymentException
+
+' =========================
+' Wiring (UI -> services -> repos)
+' =========================
+MainApp --> StoreService : create/init
+MainApp --> AppContext : set StoreService
+AppContext --> StoreService : provides
+
+DashboardController --> AppContext : getStoreService()
+DashboardController --> StoreService : read products/transactions
+
+LoginController --> AdminService : authenticate()
+AdminService --> AuthResult : returns
+
+StoreService --> ProductRepository
+StoreService --> CustomerRepository
+StoreService --> TransactionRepository
+StoreService --> PaymentProcessor
+
+TransactionRepository --> StoreService : lookup by name
+
+PaymentProcessor --> PaymentMethod : uses
+
+' =========================
+' FXML wiring
+' =========================
+login_fxml --> LoginController : fx:controller
+dash_fxml --> DashboardController : fx:controller
+login_fxml ..> css : stylesheet
+dash_fxml ..> css : stylesheet
+
+' =========================
+' CSV read/write
+' =========================
+AdminService --> admins_csv : read/write
+CustomerRepository --> customers_csv : read/write
+ProductRepository --> inventory_csv : read/write
+TransactionRepository --> transactions_csv : read/write
 
 @enduml
