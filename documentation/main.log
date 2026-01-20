@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.27 (MiKTeX 25.4) (preloaded format=pdflatex 2025.11.4)  16 DEC 2025 11:26
+This is pdfTeX, Version 3.141592653-2.6-1.40.27 (MiKTeX 25.4) (preloaded format=pdflatex 2025.11.4)  20 JAN 2026 19:46
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -324,49 +324,53 @@ LaTeX Font Info:    External font `cmex10' loaded for size
 [1
 
 {C:/Users/Blevis/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map}]
-<PlayOps.png, id=61, 1692.3225pt x 719.68875pt>
-File: PlayOps.png Graphic file (type png)
-<use PlayOps.png>
-Package pdftex.def Info: PlayOps.png  used on input line 50.
-(pdftex.def)             Requested size: 507.70067pt x 215.9083pt.
+<PlayOps-alpha-0.1.png, id=76, 1560.83125pt x 2298.5875pt>
+File: PlayOps-alpha-0.1.png Graphic file (type png)
+<use PlayOps-alpha-0.1.png>
+Package pdftex.def Info: PlayOps-alpha-0.1.png  used on input line 51.
+(pdftex.def)             Requested size: 468.25299pt x 689.58159pt.
 
-Overfull \hbox (54.73277pt too wide) in paragraph at lines 50--51
+Overfull \hbox (15.2851pt too wide) in paragraph at lines 51--52
  [] 
  []
 
 
 
-[2 <./PlayOps.png (PNG copy)>]
-Overfull \hbox (7.09015pt too wide) in paragraph at lines 60--61
+[2]
+
+[3 <./PlayOps-alpha-0.1.png (PNG copy)>]
+Overfull \hbox (7.09015pt too wide) in paragraph at lines 61--62
 []\OT1/cmr/bx/n/12 com.playops.store.Store.java \OT1/cmr/m/n/12 | Man-ages lists of cus-tomers and games. 
  []
 
 
 
-[3]
-
 [4]
 
-[5] (main.aux)
+[5]
+
+[6]
+
+[7] (main.aux)
  ***********
 LaTeX2e <2025-06-01> patch level 1
 L3 programming layer <2025-10-09>
  ***********
 Package rerunfilecheck Info: File `main.out' has not changed.
-(rerunfilecheck)             Checksum: D8F985FF663A6187B623264CBEA92ED0;1576.
+(rerunfilecheck)             Checksum: 553679CCC9576AB1204E34DDA57E8A9C;2132.
  ) 
 Here is how much of TeX's memory you used:
- 10162 strings out of 468079
- 159658 string characters out of 5425267
- 580918 words of memory out of 5000000
- 38715 multiletter control sequences out of 15000+600000
+ 10170 strings out of 468079
+ 159820 string characters out of 5425267
+ 580923 words of memory out of 5000000
+ 38718 multiletter control sequences out of 15000+600000
  633694 words of font info for 60 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  75i,6n,79p,808b,659s stack positions out of 10000i,1000n,20000p,200000b,200000s
- <C:\Users\Blevis\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\tcrm1200.pk><C:/Users/Blevis/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmbx12.pfb><C:/Users/Blevis/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr12.pfb><C:/Users/Blevis/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr17.pfb><C:/Users/Blevis/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmtt10.pfb>
-Output written on main.pdf (5 pages, 208833 bytes).
+ <C:\Users\Blevis\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\tcrm1200.pk><C:/Users/Blevis/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmbx12.pfb><C:/Users/Blevis/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi12.pfb><C:/Users/Blevis/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr12.pfb><C:/Users/Blevis/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr17.pfb><C:/Users/Blevis/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmtt10.pfb>
+Output written on main.pdf (7 pages, 370400 bytes).
 PDF statistics:
- 108 PDF objects out of 1000 (max. 8388607)
- 17 named destinations out of 1000 (max. 500000)
- 86 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 139 PDF objects out of 1000 (max. 8388607)
+ 22 named destinations out of 1000 (max. 500000)
+ 110 words of extra memory for PDF output out of 10000 (max. 10000000)
 

@@ -23,9 +23,9 @@
 \setlength{\parindent}{0pt}
 
 % Title
-\title{OOP Project Sprint 1 \& 2 Outline and Contribution Report}
+\title{OOP Project Sprint 1, 2 \& 3 Outline and Contribution Report}
 \author{PlayOps - A retro videogame \& gaming hardware retail logistics solution \\ BSc in Artificial Intelligence}
-\date{Assigning / Accepting Professor: Prof. Evis Plaku \\ December 15, 2025}
+\date{Assigning / Accepting Professor: Prof. Evis Plaku \\ January 21, 2026}
 
 \begin{document}
 
@@ -41,13 +41,14 @@ PlayOps strives to align with OOP principles, taking pride in its development pr
 \begin{itemize}
     \item \textbf{Sprint 1}: Fundamental object oriented design, management through arrays/lists encapsulation, modular design and data abstraction.
     \item \textbf{Sprint 2}: Inheritance based - interface compliant design, polymorphic behavior, encapsulation with access modifiers, pre-implemented and custom exception handling, file persistence.
+    \item \textbf{Sprint 3}: Advanced architectural separation (Repository/Service layers), persistent data management via HashMaps, and GUI integration using JavaFX with Maven.
 \end{itemize}
 
 \section{UML Class Diagram}
 The UML diagram explains the structure and relationships of the components within this project.
 
 \begin{center}
-\includegraphics[scale=0.3]{PlayOps.png}
+\includegraphics[scale=0.3]{PlayOps-alpha-0.1.png}
 \end{center}
 
 \section{Sprint 1}
@@ -150,15 +151,35 @@ A few examples of situations where the program catches exceptions and recovers c
     \item \textbf{Out of Stock:} If a product is unavailable, the purchase/rental is blocked, and the user is informed.
 \end{itemize}
 
+\section{Sprint 3}
+\subsection{Architectural Evolution and Persistence}
+Sprint 3 marked a significant transition from a monolithic Store-centric design to a more robust, tiered architecture. We introduced Repository and Service layers to further separate concerns, aligning with industry standards for maintainability.
+
+Key improvements include:
+\begin{itemize}
+    \item \textbf{HashMap Implementation:} Data storage moved from simple lists to HashMaps within repositories, allowing for $O(1)$ lookup times and more efficient data retrieval by unique identifiers.
+    \item \textbf{Enhanced File Persistence:} Robust CSV handling was enforced to ensure that all changes to customers, inventory, and transactions are immediately reflected in local storage, preventing data loss between sessions.
+    \item \textbf{Service Layer:} Business logic was extracted from the model and UI controllers into dedicated services (AdminService, StoreService), ensuring a clean separation between data processing and user interface.
+\end{itemize}
+
+\subsection{JavaFX and Maven Integration}
+To move beyond the console-based interaction, the project was migrated to a Maven-based build system to manage JavaFX dependencies. This enabled the development of a dynamic graphical user interface featuring:
+\begin{itemize}
+    \item \textbf{Admin Login:} A secure entry point for administrators to manage the system.
+    \item \textbf{Dashboard View:} A multi-tabbed interface utilizing FXML and CSS. One tab focuses on real-time stock management, while the other provides a comprehensive overview of sales and transaction history.
+    \item \textbf{MVC Pattern:} Implementation of the Model-View-Controller pattern to manage the complex interactions between the FXML layouts and the backend services.
+\end{itemize}
+
 \section{Team Roles and Contributions}
 \begin{longtable}{p{4cm} p{11cm}}
-\textbf{Name} & \textbf{Responsibilities and Contributions} \\
-\hline
-Blevis Allushi & Co-author. Designed overall class architecture and populated most helper classes such as Customer, Transaction and Product as well as critical behavior in the (Store) class. Ensured key methods were present and validated. Implemented restrictions and exception handling. UML modelling and documentation. \\
-Kristjan Seraj & Co-author. Designed file I/O architecture and implemented proper logic and restrictions regarding the successful behavior. Populated and designed Main. Debugging and refinement. Ensured no errors propagated beyond main. Polishing work in UML and documentation. \\
+    \textbf{Name} & \textbf{Responsibilities and Contributions} \\
+    \hline
+    Blevis Allushi & Co-author. Integrated Maven and JavaFX to transition the project to a GUI. Developed the Login and Dashboard controllers. Implemented dynamic tabs for admin management and sales/stock visualization. Adapted the existing structure to support the MVC pattern. \\
+    \hline
+    Kristi Seraj & Co-author. Further separated individual OOP principles through the introduction of Repositories and Services. Enforced strict file persistence for all data models. Implemented HashMap-based data structures to optimize search and storage efficiency. \\
 \end{longtable}
 
 \section{Reflection}
-The second sprint possessed a much more interesting appeal. It encompassed more advanced OOP principles that kept the design process interesting and creative. The foundations laid in Sprint 1 paid off and were a testament to how Object Oriented Programming as a whole works and builds upon itself, as evidenced by Sprint 2.
+The third sprint challenged our ability to integrate modern frameworks like JavaFX while maintaining the integrity of our OOP foundations. Moving to a Repository/Service pattern and implementing HashMaps significantly improved the application's scalability and performance. The transition from console to GUI represents a major milestone in making PlayOps a production-ready retail solution.
 
 \end{document}
